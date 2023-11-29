@@ -18,7 +18,7 @@ snowflake:
       authenticator: externalbrowser
       database: analytics
       warehouse: transforming
-      schema: dbt_winnie
+      schema: dbt_jkumalah
       threads: 8
     prod:
       type: snowflake
@@ -27,19 +27,5 @@ snowflake:
       authenticator: externalbrowser
       database: analytics
       warehouse: transforming
-      schema: dx_sandbox_prod
+      schema: dbt_jkumalah_prod
       threads: 8
-
-postgres:
-  target: dev
-  outputs:
-    dev:
-      type: postgres
-      host: "{{ env_var('DX_SANDBOX_POSTGRES_HOST') }}"
-      port: 5432
-      user: winnie
-      role: transformer
-      password: "{{ env_var('DX_SANDBOX_POSTGRES_PASSWORD') }}"
-      database: jaffle_shop
-      schema: dbt_winnie
-      threads: 1
