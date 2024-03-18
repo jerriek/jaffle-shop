@@ -12,7 +12,15 @@ jobs:
   lint_project:
     name: Run SQLFluff linter
     runs-on: ubuntu-latest
-  
+
+    env:
+      DBT_ACCOUNT_ID: 51798 # enter your account id
+      DBT_PROJECT_ID: 318162 # enter your project id
+      DBT_PR_JOB_ID:  462117 # enter your job id
+      DBT_API_KEY: ${{ secrets.DBT_API_KEY }}
+      DBT_JOB_CAUSE: 'GitHub Pipeline CI Job' 
+      DBT_JOB_BRANCH: ${{ github.ref_name }}
+
     steps:
       - uses: "actions/checkout@v3"
       - uses: "actions/setup-python@v4"
