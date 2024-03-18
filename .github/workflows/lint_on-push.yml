@@ -20,5 +20,6 @@ jobs:
           python-version: "3.9"
       - name: Install SQLFluff
         run: "python -m pip install sqlfluff"
+        run: "python -m pip install sqlfluff-templater-dbt" 
       - name: Lint project
         run: "sqlfluff lint models --dialect snowflake"
