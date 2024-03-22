@@ -4,6 +4,7 @@ templater = jinja
 runaway_limit = 10
 max_line_length = 80
 indent_unit = space
+load_macros_from_path=macros
 
 [sqlfluff:indentation]
 tab_space_size = 4
@@ -39,5 +40,3 @@ group_by_and_order_by_style = implicit
 [sqlfluff]
 exclude_rules = L022, L027
 
-[sqlfluff:templater:jinja]
-load_macros_from_path=macros
