@@ -35,3 +35,9 @@ capitalisation_policy = lower
 
 [sqlfluff:rules:ambiguous.column_references]  # Number in group by
 group_by_and_order_by_style = implicit
+
+[sqlfluff]
+exclude_rules = L022, L027
+
+[sqlfluff:templater:jinja]
+load_macros_from_path=macros
