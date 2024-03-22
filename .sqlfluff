@@ -35,18 +35,3 @@ capitalisation_policy = lower
 
 [sqlfluff:rules:ambiguous.column_references]  # Number in group by
 group_by_and_order_by_style = implicit
-
-[sqlfluff]
-exclude_rules = L022, L027
-
-[sqlfluff:templater:jinja]
-apply_dbt_builtins = True
-
-[sqlfluff:templater:jinja:macros]
-# Macros provided as builtins for dbt projects
-dbt_ref = {% macro ref(model_ref) %}{{model_ref}}{% endmacro %}
-dbt_source = {% macro source(source_name, table) %}{{source_name}}_{{table}}{% endmacro %}
-dbt_config = {% macro config() %}{% for k in kwargs %}{% endfor %}{% endmacro %}
-dbt_var = {% macro var(variable) %}item{% endmacro %}
-dbt_is_incremental = {% macro is_incremental() %}True{% endmacro %}
-
