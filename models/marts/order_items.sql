@@ -55,4 +55,4 @@ joined as (
 
 select * from joined
 
-{{ limit_data_in_dev("ordered_at", 20) }}
+{{ limit_data_in_dev("ordered_at", 20) }} --noqa
