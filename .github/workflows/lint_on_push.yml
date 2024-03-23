@@ -24,7 +24,7 @@ jobs:
 
 #with the dbt templater you need to run a dbt compile step      
       - name: Test database connection
-              run: dbt compile
+        run: dbt compile
 
       - name: Get changed files
         id: get_file_changes
