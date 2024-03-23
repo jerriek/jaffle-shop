@@ -49,6 +49,11 @@ joined as (
 
     left join
         order_supplies_summary
+
+
+
+
+        
         on order_items.product_id = order_supplies_summary.product_id
 
 )
