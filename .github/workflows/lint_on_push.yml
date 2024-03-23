@@ -27,7 +27,7 @@ jobs:
         uses: trilom/file-changes-action@v1.2.4
         with:
           output: ' '
-          
+
 #updated github commands and setup 
       - name: Get new and changed .sql files in /models to lint
         id: get_files_to_lint
@@ -53,4 +53,4 @@ jobs:
       #adding a conditional step that outputs 0 if there are no files to lint 
         if: steps.get_files_to_lint.outputs.lintees != ''
         shell: bash -l {0}
-        run: "sqlfluff lint models --dialect snowflake"
+        run: "sqlfluff lint ${{ steps.get_files_to_lint.outputs.lintees }} "

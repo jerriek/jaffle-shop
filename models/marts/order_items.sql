@@ -31,7 +31,6 @@ order_supplies_summary as (
 
     group by 1
 ),
-
 joined as (
     select
         order_items.*,
