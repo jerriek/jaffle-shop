@@ -1,13 +1,13 @@
 with
 
 order_items as (
-select * from {{ ref('stg_order_items') }}
+    select * from {{ ref('stg_order_items') }}
 ),
 
 
 orders as (
 
-select * from {{ ref('stg_orders') }}
+    select * from {{ ref('stg_orders') }}
 ),
 
 products as (
@@ -31,6 +31,7 @@ order_supplies_summary as (
 
     group by 1
 ),
+
 joined as (
     select
         order_items.*,
