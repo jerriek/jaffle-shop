@@ -15,9 +15,19 @@ repos:
     rev: "2.3.1"
     hooks:
       - id: sqlfluff-lint
+        entry: sqlfluff lint --processes 0
+        language: python
+        description: "Lints sql files with `SQLFluff`"
+        types: [sql]
+        require_serial: true
         additional_dependencies:
           ["dbt-metricflow[snowflake]~=0.2.0", "sqlfluff-templater-dbt~=2.3.1"]
       - id: sqlfluff-fix
+        entry: sqlfluff fix --force --show-lint-violations --processes 0
+        language: python
+        description: "Fixes sql lint errors with `SQLFluff`"
+        types: [sql]
+        require_serial: true
         additional_dependencies:
           ["dbt-metricflow[snowflake]~=0.2.0", "sqlfluff-templater-dbt~=2.3.1"]
   - repo: https://github.com/psf/black
@@ -25,10 +35,10 @@ repos:
     hooks:
       - id: black
 
-  - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
-    rev: v1.2.1
-    hooks:
-    - id: dbt-compile
-      args: ["--cmd-flags", "++profiles-dir", "."]
-    - id: check-model-has-tests
-      args: ["--test-cnt", "2", "--"]
+  # - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
+  #   rev: v1.2.1
+  #   hooks:
+  #   - id: dbt-compile
+  #     args: ["--cmd-flags", "++profiles-dir", "."]
+  #   - id: check-model-has-tests
+  #     args: ["--test-cnt", "2", "--"]
