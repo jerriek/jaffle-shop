@@ -5,3 +5,4 @@ products as (
 )
 
 select * from products
+     
