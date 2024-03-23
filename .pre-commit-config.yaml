@@ -3,9 +3,13 @@ repos:
     rev: v4.4.0
     hooks:
       - id: check-yaml
+        files: ^models/
       - id: end-of-file-fixer
+        files: ^models/
       - id: trailing-whitespace
+        files: ^models/
       - id: requirements-txt-fixer
+        files: ^models/
   - repo: https://github.com/charliermarsh/ruff-pre-commit
     rev: v0.0.287
     hooks:
@@ -16,20 +20,18 @@ repos:
     hooks:
       - id: sqlfluff-lint
         entry: sqlfluff lint --processes 0
-        language: python
         description: "Lints sql files with `SQLFluff`"
         types: [sql]
-        require_serial: true
         additional_dependencies:
           ["dbt-metricflow[snowflake]~=0.2.0", "sqlfluff-templater-dbt~=2.3.1"]
+        files: ^models/
       - id: sqlfluff-fix
         entry: sqlfluff fix --force --show-lint-violations --processes 0
-        language: python
         description: "Fixes sql lint errors with `SQLFluff`"
         types: [sql]
-        require_serial: true
         additional_dependencies:
           ["dbt-metricflow[snowflake]~=0.2.0", "sqlfluff-templater-dbt~=2.3.1"]
+        files: ^models/
   - repo: https://github.com/psf/black
     rev: "23.7.0"
     hooks:
