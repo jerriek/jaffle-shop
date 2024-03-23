@@ -2,14 +2,14 @@ with
 
 order_items as (
 
-    select * from {{ ref('stg_order_items') }}
+select * from {{ ref('stg_order_items') }}
 
 ),
 
 
 orders as (
 
-    select * from {{ ref('stg_orders') }}
+select * from {{ ref('stg_orders') }}
 ),
 
 products as (
