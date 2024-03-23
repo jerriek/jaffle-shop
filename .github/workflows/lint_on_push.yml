@@ -27,6 +27,7 @@ jobs:
         uses: trilom/file-changes-action@v1.2.4
         with:
           output: ' '
+          
 #updated github commands and setup 
       - name: Get new and changed .sql files in /models to lint
         id: get_files_to_lint
