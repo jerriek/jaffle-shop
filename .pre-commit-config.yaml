@@ -24,3 +24,11 @@ repos:
     rev: "23.7.0"
     hooks:
       - id: black
+  - repos:
+    - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
+    rev: v1.2.1
+    hooks:
+    - id: dbt-compile
+      args: ["--cmd-flags", "++profiles-dir", "."]
+    - id: check-model-has-tests
+      args: ["--test-cnt", "2", "--"]
