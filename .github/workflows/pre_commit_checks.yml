@@ -1,15 +1,4 @@
 name: pre-commit-check
-
-
-
-
-      #   uses: dbt-checkpoint/action@v0.1
-      #   with:
-      #     extra_args: --files ${{ steps.get_file_changes.outputs.files}}
-      #     dbt_version: 1.6.3
-      #     dbt_adapter: dbt-snowflake
-
-name: pre-commit-check
 on:
   push:
     branches-ignore:
