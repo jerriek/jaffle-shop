@@ -19,8 +19,7 @@ jobs:
     # Set environment variables used throughout workflow
     env:
       DBT_PROFILES_DIR: .
-      DBT_SNOWFLAKE_USER: ${{ env.DBT_SNOWFLAKE_USER }}
-      DBT_SNOWFLAKE_PASSWORD: ${{ secrets.DBT_SNOWFLAKE_PASSWORD }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 
     steps:
 
@@ -39,10 +38,11 @@ jobs:
         uses: trilom/file-changes-action@v1.2.4
         with:
           output: ' '
+          
       - name: Echo variable
         id: echo_variable
         run: echo $DBT_SNOWFLAKE_USER
-
+        
     # Transforming the output of get_file_changes to a string we can use for our next step
     # We want to take in account both new files and files that have been modified
       - name: Get new and changed .sql files in /models to lint
