@@ -31,10 +31,10 @@ repos:
     hooks:
       - id: black
 
-  # - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
-  #   rev: v1.2.1
-  #   hooks:
-  #   - id: dbt-compile
-  #     args: ["--cmd-flags", "++profiles-dir", "."]
-  #   - id: check-model-has-tests
-  #     args: ["--test-cnt", "2", "--"]
+  - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
+    rev: v1.2.1
+    hooks:
+    - id: dbt-compile
+      args: ["--cmd-flags", "++profiles-dir", "."]
+    - id: check-model-has-tests
+      args: ["--test-cnt", "2", "--"]
