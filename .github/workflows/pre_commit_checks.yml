@@ -9,6 +9,7 @@ jobs:
   pre-commit-pip:
     name: Install pre-commit via pip
     runs-on: ${{ matrix.os }}
+    environment: SNOWFLAKE_SANDBOX_ACCOUNT
     strategy:
       fail-fast: false
       matrix:
