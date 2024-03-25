@@ -14,9 +14,6 @@ jobs:
       matrix:
         os: ['ubuntu-latest']
 
-  dbt-checkpoint:
-    runs-on: ubuntu-latest
-    # Set environment variables used throughout workflow
     env:
       DBT_PROFILES_DIR: .
       DBT_SNOWFLAKE_USER: ${{ env.DBT_SNOWFLAKE_USER}}
