@@ -13,17 +13,20 @@ jobs:
       fail-fast: false
       matrix:
         os: ['ubuntu-latest']
-        python-version: [3.8]
 
+  dbt-checkpoint:
+    runs-on: ubuntu-latest
     # Set environment variables used throughout workflow
     env:
       DBT_PROFILES_DIR: .
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DBT_SNOWFLAKE_USER: ${{ env.DBT_SNOWFLAKE_USER}}
+      DBT_SNOWFLAKE_PASSWORD: ${{secrets.DBT_SNOWFLAKE_PASSWORD}}
 
     steps:
-
-      - name: Checkout branch
-        uses: actions/checkout@v3
+      - uses: "actions/checkout@v3"
+      - uses: "actions/setup-python@v4"
+        with:
+          python-version: "3.9"
 
     # Using bash and pip to install dbt and pre-commit
     # Update the dbt installation command to include the adapter you need
@@ -38,6 +41,10 @@ jobs:
         uses: trilom/file-changes-action@v1.2.4
         with:
           output: ' '
+
+      - name: Echo variable
+        id: echo_variable
+        run: echo $DBT_SNOWFLAKE_USER
 
     # Transforming the output of get_file_changes to a string we can use for our next step
     # We want to take in account both new files and files that have been modified
@@ -65,3 +72,10 @@ jobs:
         shell: bash -l {0}
         run: |
           pre-commit run --all-files ${{ steps.get_files_to_lint.outputs.files }}
+      
+      - name: Run dbt checkpoint
+        uses: dbt-checkpoint/action@v0.1
+        with:
+          extra_args: --files ${{ steps.get_file_changes.outputs.files}}
+          dbt_version: 1.6.3
+          dbt_adapter: dbt-snowflake
