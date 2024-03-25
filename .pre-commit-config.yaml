@@ -6,7 +6,7 @@ repos:
       - id: end-of-file-fixer
       - id: trailing-whitespace
       - id: requirements-txt-fixer
-      
+
   - repo: https://github.com/charliermarsh/ruff-pre-commit
     rev: v0.0.287
     hooks:
@@ -31,3 +31,11 @@ repos:
 # your-github-repo/.pre-commit-config.yaml
  default_stages: [commit, push]
     
+repos:
+- repo: https://github.com/dbt-checkpoint/dbt-checkpoint
+ rev: v1.2.1
+ hooks:
+ - id: dbt-compile
+   args: ["--cmd-flags", "++profiles-dir", "."]
+ - id: check-model-has-tests
+   args: ["--test-cnt", "2", "--"]
