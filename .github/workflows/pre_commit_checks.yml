@@ -6,14 +6,10 @@ on:
       - 'main'
       
 jobs:
-  pre-commit-pip:
-    name: Install pre-commit via pip
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: ['ubuntu-latest']
-
+  dbt-checkpoint:
+    runs-on: ubuntu-latest
+    environment: SNOWFLAKE_SANDBOX_ACCOUNT
+    # Set environment variables used throughout workflow
     env:
       DBT_PROFILES_DIR: .
       DBT_SNOWFLAKE_USER: ${{ env.DBT_SNOWFLAKE_USER}}
