@@ -29,14 +29,11 @@ repos:
         additional_dependencies:
           ["dbt-metricflow[snowflake]~=0.2.0", "sqlfluff-templater-dbt~=2.3.1"]
 
-  - repo: https://github.com/psf/black
-    rev: "23.7.0"
-    hooks:
-      - id: black
 
   - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
     rev: v1.2.1
     hooks:
+    - id: dbt-deps
     - id: dbt-compile
       args: ["--cmd-flags", "++profiles-dir", "."]
     - id: check-model-has-tests
