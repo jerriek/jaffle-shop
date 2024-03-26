@@ -39,7 +39,5 @@ repos:
     hooks:
     - id: dbt-compile
       args: ["--cmd-flags", "++profiles-dir", "."]
-    - id: dbt-run
-      args: ["--model-prefix", "+", "--"]
     - id: check-model-has-tests
       args: ["--test-cnt", "2", "--"]

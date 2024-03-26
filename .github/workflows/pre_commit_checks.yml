@@ -70,3 +70,4 @@ jobs:
           pre-commit run --all-files ${{ steps.get_files_to_lint.outputs.files }}
         env: 
           SNOWFLAKE_SANDBOX_ACCOUNT: 1
+          SNOWFLAKE_SANDBOX_USER: 2
