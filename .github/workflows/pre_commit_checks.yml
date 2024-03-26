@@ -68,3 +68,5 @@ jobs:
         shell: bash -l {0}
         run: |
           pre-commit run --all-files ${{ steps.get_files_to_lint.outputs.files }}
+        env: 
+          SNOWFLAKE_SANDBOX_ACCOUNT: 1
