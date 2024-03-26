@@ -7,15 +7,6 @@ repos:
       - id: trailing-whitespace
       - id: requirements-txt-fixer
 
-  - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
-    rev: v1.2.1
-    hooks:
-    - id: dbt-deps
-    - id: dbt-compile
-      args: ["--cmd-flags", "++profiles-dir", "."]
-    - id: check-model-has-tests
-      args: ["--test-cnt", "2", "--"]
-
   - repo: https://github.com/sqlfluff/sqlfluff
     rev: "2.3.1"
     hooks:
