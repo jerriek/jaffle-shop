@@ -1,7 +1,11 @@
 name: "jaffle_shop"
 version: "2.1.0"
 config-version: 2
-
+dbt-cloud:
+  project-id: "318162"
+  account-name: "dbt Labs - ProServ Sandbox"
+  account-id: "51798"
+  
 profile: "snowflake"
 require-dbt-version: ">=1.6.0"
 
@@ -31,3 +35,11 @@ models:
       +materialized: view
     marts:
       +materialized: table
+      jkumalah_customers:
+        +schema: jkumalah_customers
+
+  elementary:
+    +schema: elementary
+
+on-run-end:
+  - "{{ dbt_artifacts.upload_results(results) }}"

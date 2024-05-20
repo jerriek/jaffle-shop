@@ -13,7 +13,6 @@ orders as (
 ),
 
 products as (
-
     select * from {{ ref('stg_products') }}
 
 ),
@@ -57,3 +56,5 @@ joined as (
 )
 
 select * from joined
+
+{{ limit_data_in_dev("ordered_at", 20) }}
