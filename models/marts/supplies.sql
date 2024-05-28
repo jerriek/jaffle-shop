@@ -6,4 +6,4 @@ supplies as (
 
 )
 
-select * from supplies
+select * from supplies 
