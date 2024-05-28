@@ -1,7 +1,11 @@
 name: "jaffle_shop"
 version: "2.1.0"
 config-version: 2
-
+dbt-cloud:
+  project-id: "318162"
+  account-name: "dbt Labs - ProServ Sandbox"
+  account-id: "51798"
+  
 profile: "snowflake"
 require-dbt-version: ">=1.6.0"
 
