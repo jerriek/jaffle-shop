@@ -24,7 +24,7 @@ clean-targets:
 vars:
   truncate_timespan_to: "{{ current_timestamp() }}"
   "dbt_date:time_zone": "America/Los_Angeles"
-  filter: LIMIT 10
+  filter: LIMIT 100
   limit: true 
 
 seeds:
