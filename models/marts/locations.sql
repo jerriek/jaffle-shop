@@ -6,4 +6,6 @@ locations as (
 
 )
 
-select * from locations
+select * ,
+1 as test
+from locations
