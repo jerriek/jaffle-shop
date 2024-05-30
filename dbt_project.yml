@@ -24,6 +24,8 @@ clean-targets:
 vars:
   truncate_timespan_to: "{{ current_timestamp() }}"
   "dbt_date:time_zone": "America/Los_Angeles"
+  filter: LIMIT 100
+  limit: true 
 
 seeds:
   jaffle_shop:
@@ -33,13 +35,7 @@ models:
   jaffle_shop:
     staging:
       +materialized: view
+
     marts:
       +materialized: table
-      jkumalah_customers:
-        +schema: jkumalah_customers
 
-  elementary:
-    +schema: elementary
-
-on-run-end:
-  - "{{ dbt_artifacts.upload_results(results) }}"
