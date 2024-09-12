@@ -1,9 +1,7 @@
 with
 
 order_items as (
-
     select * from {{ ref('stg_order_items') }}
-
 ),
 
 
@@ -51,10 +49,11 @@ joined as (
 
     left join
         order_supplies_summary
+
         on order_items.product_id = order_supplies_summary.product_id
 
 )
 
 select * from joined
 
-{{ limit_data_in_dev("ordered_at", 20) }}
+{{ limit_data_in_dev("ordered_at", 20) }} --noqa
