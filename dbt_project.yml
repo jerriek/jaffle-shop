@@ -24,8 +24,7 @@ clean-targets:
 vars:
   truncate_timespan_to: "{{ current_timestamp() }}"
   "dbt_date:time_zone": "America/Los_Angeles"
-  full_test: true
-  is_full_test: false
+  is_full_test: true
 
 
 seeds:
