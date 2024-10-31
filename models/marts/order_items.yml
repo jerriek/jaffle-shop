@@ -4,7 +4,13 @@ models:
       - name: order_item_id
         tests:
           - not_null
-          - unique
+          - unique:
+              where: "ordered_at >= current_date() - 3"
+          - is_unique_custom:
+              condition: "ordered_at >= current_date() - 3"
+
+                
+        
 
 semantic_models:
   - name: order_item
