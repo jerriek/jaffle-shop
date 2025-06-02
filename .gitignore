@@ -13,3 +13,4 @@ logs/
 *.duckdb-wal
 *.db
 *.db-wal
+dbt_internal_packages/
