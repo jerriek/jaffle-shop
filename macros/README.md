@@ -150,3 +150,30 @@ WHERE query_tag:application = 'dbt'
 ```
 
 Your project now has **enterprise-grade query tagging** for comprehensive cost monitoring, performance analysis, and governance in Snowflake! 🎉 
+
+## **Orders-related models** (tagged `orders`):
+- `stg_orders` 
+- `stg_order_items`
+- `orders` (also tagged `hourly` as requested)
+- `order_items`
+
+## **Products-related models** (tagged `products`):
+- `stg_products`
+- `products`
+
+## **Supplies-related models** (tagged `supplies`):
+- `stg_supplies`
+- `supplies`
+
+## **Special tags:**
+- `orders` model has both `["orders", "hourly"]` tags (additive as requested)
+
+## **Using tags for selective runs:**
+
+Now you can run specific groups of models using these tags:
+
+```bash
+<code_block_to_apply_changes_from>
+```
+
+The tags are now set up to help you organize and run your models more efficiently based on their business domain! 
