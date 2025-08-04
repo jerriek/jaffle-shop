@@ -2,6 +2,9 @@ models:
   - name: orders
     description: Order overview data mart, offering key details for each order inlcluding if it's a customer's first order and a food vs. drink item breakdown. One row per order.
     tags: ["orders", "hourly"]
+    config:
+      query_tag: '{"application": "dbt", "model": "orders", "domain": "orders", "layer": "marts", "refresh": "hourly", "priority": "high"}'
+      pre-hook: "{{ set_orders_query_tag() }}"
     columns:
       - name: order_id
         description: The unique key of the orders mart.

@@ -1,3 +1,8 @@
+{{ set_dynamic_query_tag(
+    domain="customer_analytics", 
+    custom_tags={"model_type": "customer_mart", "complexity": "medium"}
+) }}
+
 with
 
 customers as (
