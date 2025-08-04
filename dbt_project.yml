@@ -31,10 +31,16 @@ seeds:
 
 models:
   jaffle_shop:
+    # Project-level query tags for all models
+    +query_tag: "dbt_jaffle_shop"
     staging:
       +materialized: view
+      # Staging-specific query tags
+      +query_tag: "dbt_jaffle_shop_staging"
     marts:
       +materialized: table
+      # Marts-specific query tags  
+      +query_tag: "dbt_jaffle_shop_marts"
       jkumalah_customers:
         +schema: jkumalah_customers
 
