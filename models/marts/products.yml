@@ -1,3 +1,8 @@
+models:
+  - name: products
+    description: Products data mart with cleaned product information, one row per product.
+    tags: ["products"]
+
 semantic_models:
   #The name of the semantic model.
   - name: products

@@ -1,27 +1,81 @@
 models:
   - name: customers
     description: Customer overview data mart, offering key details for each unique customer. One row per customer.
+    tests:
+      # Business logic tests using generic macros
+      - assert_column_a_less_than_or_equal_to_column_b:
+          column_a: first_ordered_at
+          column_b: last_ordered_at
+          name: first_order_before_last_order
+      
+      - assert_customer_type_logic:
+          name: customer_type_matches_order_count
+      
+      - assert_column_a_greater_than_or_equal_to_column_b:
+          column_a: lifetime_spend
+          column_b: lifetime_spend_pretax
+          name: lifetime_spend_includes_tax
+          
+      - assert_conditional_not_null:
+          column_name: first_ordered_at
+          condition_column: count_lifetime_orders
+          condition_operator: ">"
+          condition_value: 0
+          name: customers_with_orders_have_first_date
+          
+      - assert_conditional_not_null:
+          column_name: last_ordered_at
+          condition_column: count_lifetime_orders
+          condition_operator: ">"
+          condition_value: 0
+          name: customers_with_orders_have_last_date
+
     columns:
       - name: customer_id
         description: The unique key of the orders mart.
         tests:
           - not_null
           - unique
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
       - name: customer_name
         description: Customers' full name.
+        tests:
+          - not_null
       - name: count_lifetime_orders
         description: Total number of orders a customer has ever placed.
+        tests:
+          - not_null
+          - assert_non_negative
       - name: first_ordered_at
         description: The timestamp when a customer placed their first order.
       - name: last_ordered_at
         description: The timestamp of a customer's most recent order.
       - name: lifetime_spend_pretax
         description: The sum of all the pre-tax subtotals of every order a customer has placed.
+        tests:
+          - not_null
+          - assert_non_negative
+          - assert_positive_values_when_condition:
+              condition_column: count_lifetime_orders
+              condition_operator: ">"
+              condition_value: 0
+              name: positive_pretax_spend_for_customers_with_orders
       - name: lifetime_spend
         description: The sum of all the order totals (including tax) that a customer has ever placed.
+        tests:
+          - not_null
+          - assert_non_negative
+          - assert_positive_values_when_condition:
+              condition_column: count_lifetime_orders
+              condition_operator: ">"
+              condition_value: 0
+              name: positive_total_spend_for_customers_with_orders
       - name: customer_type
         description: Options are 'new' or 'returning', indicating if a customer has ordered more than once or has only placed their first order to date.
         tests:
+          - not_null
           - accepted_values:
               values: ["new", "returning"]
 

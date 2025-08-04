@@ -13,6 +13,7 @@
     "bungcip.better-toml",
     "tamasfe.even-better-toml",
     "mechatroner.rainbow-csv",
-    "bastienboutonnet.vscode-dbt"
+    "bastienboutonnet.vscode-dbt",
+    "dbtLabsInc.dbt"
   ]
 }

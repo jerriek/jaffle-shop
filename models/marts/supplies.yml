@@ -1,3 +1,8 @@
+models:
+  - name: supplies
+    description: Supplies data mart with supply cost information, one row per supply.
+    tags: ["supplies"]
+
 semantic_models:
   #The name of the semantic model.
   - name: supplies
