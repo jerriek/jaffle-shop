@@ -3,7 +3,7 @@ models:
     description: Customer overview data mart, offering key details for each unique customer. One row per customer.
     config:
       query_tag: '{"application": "dbt", "model": "customers", "domain": "customer_analytics", "layer": "marts", "refresh": "daily"}'
-      pre-hook: set_customer_query_tag()
+
     tests:
       # Business logic tests using generic macros
       - assert_column_a_less_than_or_equal_to_column_b:

@@ -1,7 +1,4 @@
-{{ set_dynamic_query_tag(
-    domain="orders", 
-    custom_tags={"layer": "staging", "data_source": "raw_orders", "model_type": "staging"}
-) }}
+{{ set_dynamic_query_tag(domain='orders') }}
 
 with
 
