@@ -1,10 +1,11 @@
 models:
   - name: products
     description: Products data mart with cleaned product information, one row per product.
-    tags: ["products"]
+
     config:
+      tags: ["products"]
       query_tag: '{"application": "dbt", "model": "products", "domain": "products", "layer": "marts", "refresh": "weekly"}'
-      pre-hook: "{{ set_product_query_tag() }}"
+      pre-hook: set_product_query_tag() 
 
 semantic_models:
   #The name of the semantic model.

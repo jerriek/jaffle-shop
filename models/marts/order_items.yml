@@ -1,7 +1,8 @@
 models:
   - name: order_items
     description: Order items data mart with product and supply details, one row per item.
-    tags: ["orders"]
+    config:
+      tags: ["orders"]
     columns:
       - name: order_item_id
         tests:
