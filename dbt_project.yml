@@ -32,17 +32,20 @@ seeds:
 models:
   jaffle_shop:
     # Project-level query tags for all models
-    +query_tag: "dbt_jaffle_shop"
+    +query_tag: dbt_jaffle_shop
     staging:
       +materialized: view
       # Staging-specific query tags
-      +query_tag: "dbt_jaffle_shop_staging"
+      +query_tag: dbt_jaffle_shop_staging
     marts:
       +materialized: table
       # Marts-specific query tags  
-      +query_tag: "dbt_jaffle_shop_marts"
+      +query_tag: dbt_jaffle_shop_marts
       jkumalah_customers:
         +schema: jkumalah_customers
 
   elementary:
     +schema: elementary
+
+on-run-start:
+  - "alter session set query_tag = 'dbt_run_{{ invocation_id }}';"
