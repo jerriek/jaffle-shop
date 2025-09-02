@@ -1,0 +1,25 @@
+models:
+  - name: mock_model
+    description: A test model that is used to capture information about other test models
+    columns:
+      - name: order_id
+        description: The unique key of the orders mart.
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: The foreign key relating to the customer who placed the order.
+        tests:
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: test_type
+        description: The type of test
+      - name: ordered_at
+        description: The timestamp the order was placed at.
+      - name: order_cost
+        description: The sum of supply expenses to fulfill the order.
+      - name: is_test
+        description: A boolean indicating if this is a test
+      - name: is_test_unique
+        description: A boolean indicating if this is a unique tes.
